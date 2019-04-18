@@ -68,7 +68,7 @@ Param (
 ## FUNCTIONS
 
 Function Add-ADOU {
-
+  New-ADOrganizationalUnit
 }
 
 Function Import-ADUsers {
