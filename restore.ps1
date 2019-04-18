@@ -75,6 +75,12 @@ Function Import-ADUsers {
 
 }
 
+Function Add-SQLDB {
 
+}
+
+Function Import-SQLData {
+
+}
 
 ## EXECUTION
