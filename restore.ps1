@@ -68,7 +68,13 @@ Param (
 ## FUNCTIONS
 
 Function Add-ADOU {
-  New-ADOrganizationalUnit
+  Param (
+    [Parameter(Mandatory = $true)]
+    [string]$OUName
+    [Parameter(Mandatory = $false)]
+    [string]$OUPath = "DC=seandersontech,DC=com"
+  )
+  New-ADOrganizationalUnit -Name $OUName -Path $OUPath
 }
 
 Function Import-ADUsers {
@@ -79,11 +85,22 @@ Function Import-ADUsers {
     [string]$OUPath
   )
 
+  # Import CSV File
+
   $BackupADUsers = Import-CSV $BackupCSVPath
   
-  # Insert a Custom PSObject to change Phone1 and Phone2 to OfficePhone and MobilePhone
-  
-  New-ADUser $ADUsers
+  # Fix naming from .csv file
+
+  $ADUsers = $BackupADUsers | Select-Object `
+    @{Name = 'DisplayName' ; Expression = {$_.first_name + " " + $_.last_name}},
+    @{Name = 'GivenName' ; Expression = {$_.first_name}},
+    @{Name = 'Surname' ; Expression = {$_.last_name}},
+    city,
+    @{Name = 'PostalCode' ; Expression = {$_.zip}},
+    @{Name = 'OfficePhone' ; Expression = {$_.phone1}},
+    @{Name = 'MobilePhone' ; Expression = {$_.phone2}}   
+
+  New-ADUser -Path $OUPath $ADUsers
   
 }
 
