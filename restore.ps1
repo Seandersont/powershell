@@ -72,7 +72,19 @@ Function Add-ADOU {
 }
 
 Function Import-ADUsers {
+  Param (
+    [Parameter(Mandatory)]
+    [string]$BackupCsvPath,
+    [Parameter(Mandatory)]
+    [string]$OUPath
+  )
 
+  $BackupADUsers = Import-CSV $BackupCSVPath
+  
+  # Insert a Custom PSObject to change Phone1 and Phone2 to OfficePhone and MobilePhone
+  
+  New-ADUser $ADUsers
+  
 }
 
 Function Add-SQLDB {
