@@ -60,8 +60,8 @@
 ## PARAMETERS
 
 Param (
-  [string]$OUName = finance
-  [string]$ADUsersCSVPath = ".\Requirements2\financePersonnel.csv"
+  [string]$OUName = "finance",
+  [string]$ADUsersCSVPath = "c:\Users\Administrator\Documents\gitRepos\powershell\Requirements2\financePersonnel.csv",
   [string]$OUPath = "DC=seandersontech,DC=com"
 )
 
@@ -72,7 +72,7 @@ Param (
 Function Add-ADOU {
   Param (
     [Parameter(Mandatory = $true)]
-    [string]$OUName
+    [string]$OUName,
     [Parameter(Mandatory = $false)]
     [string]$OUPath = "DC=seandersontech,DC=com"
   )
