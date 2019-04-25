@@ -60,7 +60,9 @@
 ## PARAMETERS
 
 Param (
-  # Parameters go here
+  [string]$OUName = finance
+  [string]$ADUsersCSVPath = ".\Requirements2\financePersonnel.csv"
+  [string]$OUPath = "DC=seandersontech,DC=com"
 )
 
 ## VARIABLES
@@ -74,7 +76,11 @@ Function Add-ADOU {
     [Parameter(Mandatory = $false)]
     [string]$OUPath = "DC=seandersontech,DC=com"
   )
+
+  # Create New AD Organizational Unit
+
   New-ADOrganizationalUnit -Name $OUName -Path $OUPath
+
 }
 
 Function Import-ADUsers {
@@ -92,6 +98,8 @@ Function Import-ADUsers {
   # Fix naming from .csv file
 
   $ADUsers = $BackupADUsers | Select-Object `
+    @{Name = 'SamAccountName' ; Expression = {$_.first_name + $_.last_name}},
+    @{Name = 'Name' ; Expression = {$_.first_name + " " + $_.last_name}},
     @{Name = 'DisplayName' ; Expression = {$_.first_name + " " + $_.last_name}},
     @{Name = 'GivenName' ; Expression = {$_.first_name}},
     @{Name = 'Surname' ; Expression = {$_.last_name}},
@@ -100,7 +108,9 @@ Function Import-ADUsers {
     @{Name = 'OfficePhone' ; Expression = {$_.phone1}},
     @{Name = 'MobilePhone' ; Expression = {$_.phone2}}   
 
-  New-ADUser -Path $OUPath $ADUsers
+  # Create Users from given data
+
+  $ADUsers | New-ADUser -Path $OUPath
   
 }
 
@@ -113,3 +123,9 @@ Function Import-SQLData {
 }
 
 ## EXECUTION
+
+Add-ADOU -OUName $OUName
+
+$OUPath = "OU=" + $OUName + "," + $OUPath
+
+Import-ADUsers -BackupCsvPath $ADUsersCSVPath -OUPath $OUPath
