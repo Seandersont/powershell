@@ -1,5 +1,4 @@
-# Requires -version 2
-<#
+﻿<#
 .SYNOPSIS
   This script restores active directory OU's and reconfigures SQL server.
 
@@ -56,6 +55,8 @@
   Creation Date:  17 April, 2019
   Purpose/Change: Initial script development
 #>
+
+# Requires -version 2
 
 ## PARAMETERS
 
