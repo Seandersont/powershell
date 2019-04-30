@@ -63,7 +63,8 @@
 Param (
   [string]$OUName = "finance",
   [string]$ADUsersCSVPath = "c:\Users\Administrator\Documents\gitRepos\powershell\Requirements2\financePersonnel.csv",
-  [string]$OUPath = "DC=seandersontech,DC=com"
+  [string]$OUPath = "DC=seandersontech,DC=com",
+  [string]$Database = "ClientDB"
 )
 
 ## VARIABLES
@@ -77,10 +78,14 @@ Function Add-ADOU {
     [Parameter(Mandatory = $false)]
     [string]$OUPath = "DC=seandersontech,DC=com"
   )
+  Write-Host -ForegroundColor Cyan "Configuring AD"
+  Write-Host -ForegroundColor Yellow "Creating OU " $OUName
 
-  # Create New AD Organizational Unit
+  ## Create New AD Organizational Unit
 
   New-ADOrganizationalUnit -Name $OUName -Path $OUPath
+
+  Write-Host -ForegroundColor Green "Done"
 
 }
 
@@ -92,7 +97,9 @@ Function Import-ADUsers {
     [string]$OUPath
   )
 
-  # Import CSV File
+  Write-Host -ForegroundColor Yellow "Importing Users"
+
+  ## Import CSV File
 
   $BackupADUsers = Import-CSV $BackupCSVPath
   
@@ -109,13 +116,58 @@ Function Import-ADUsers {
     @{Name = 'OfficePhone' ; Expression = {$_.phone1}},
     @{Name = 'MobilePhone' ; Expression = {$_.phone2}}   
 
-  # Create Users from given data
+  ## Create Users from given data
 
   $ADUsers | New-ADUser -Path $OUPath
   
+  Write-Host -ForegroundColor Green "Done"
+
 }
 
 Function Add-SQLDB {
+  Param (
+    [Parameter(Mandatory)]
+    [string]$Database,
+    [string]$Table = "Client_A_Contacts",
+    [string]$SqlServer = "DCSVR01",
+    [string]$SqlServerPath = "SQLSERVER:\SQL\DCSVR01\"
+  )
+  Write-Host -ForegroundColor Cyan "Configuring SQL"
+  Write-Host -ForegroundColor Yellow "Creating Database "Database"
+
+  ## Create Database
+
+  $svr = get-item ($SqlServerPath + "default")
+  $db = New-Object -TypeName Microsoft.SqlServer.Management.Smo.Database -ArguementList $svr, $Database
+  $db.Create()
+
+  Write-Host -ForegroundColor Green $db.Name "created" $db.CreateDate
+
+  ## Add Table
+  # Define Table
+
+  Write-Host -ForegroundColor Yellow "Creating Table " $Table
+
+  $CreateTable = @"
+    Use DCSVR01
+    CREATE TABLE Client_A_Contacts
+    (
+    first_name varchar(100) NOT NULL,
+    last_name varchar(100) NOT NULL,
+    samAccount varchar(100) NOT NULL,
+    city varchar(100) NOT NULL,
+    county varchar(100) NOT NULL,
+    zip int NOT NULL,
+    phone1 varchar(20) NOT NULL,
+    phone2 varchar(20) NOT NULL,
+    )
+  "@
+
+  # Create Table
+
+  Invoke-Sql -ServerInstance $SqlServer -Database $Database -Query $CreateTable
+
+  Write-Host -ForegroundColor Green "Done"
 
 }
 
@@ -130,3 +182,5 @@ Add-ADOU -OUName $OUName
 $OUPath = "OU=" + $OUName + "," + $OUPath
 
 Import-ADUsers -BackupCsvPath $ADUsersCSVPath -OUPath $OUPath
+
+Add-SQLDB -Database $ClientDB
