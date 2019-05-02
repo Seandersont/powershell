@@ -133,15 +133,15 @@ Function Add-SQLDB {
     [string]$SqlServerPath = "SQLSERVER:\SQL\DCSVR01\"
   )
   Write-Host -ForegroundColor Cyan "Configuring SQL"
-  Write-Host -ForegroundColor Yellow "Creating Database "Database"
+  Write-Host -ForegroundColor Yellow "Creating Database " $Database
 
   ## Create Database
 
   $svr = get-item ($SqlServerPath + "default")
-  $db = New-Object -TypeName Microsoft.SqlServer.Management.Smo.Database -ArguementList $svr, $Database
+  $db = New-Object -TypeName Microsoft.SqlServer.Management.Smo.Database -ArgumentList $svr, $Database
   $db.Create()
 
-  Write-Host -ForegroundColor Green $db.Name "created" $db.CreateDate
+  Write-Host -ForegroundColor Green $db.Name "Created" $db.CreateDate
 
   ## Add Table
   # Define Table
@@ -149,7 +149,7 @@ Function Add-SQLDB {
   Write-Host -ForegroundColor Yellow "Creating Table " $Table
 
   $CreateTable = @"
-    Use DCSVR01
+    Use ClientDB
     CREATE TABLE Client_A_Contacts
     (
     first_name varchar(100) NOT NULL,
@@ -159,16 +159,15 @@ Function Add-SQLDB {
     county varchar(100) NOT NULL,
     zip int NOT NULL,
     phone1 varchar(20) NOT NULL,
-    phone2 varchar(20) NOT NULL,
+    phone2 varchar(20) NOT NULL
     )
-  "@
+"@
 
   # Create Table
 
-  Invoke-Sql -ServerInstance $SqlServer -Database $Database -Query $CreateTable
+  Invoke-Sqlcmd -ServerInstance $SqlServer -Database $Database -Query $CreateTable
 
   Write-Host -ForegroundColor Green "Done"
-
 }
 
 Function Import-SQLData {
@@ -183,4 +182,4 @@ $OUPath = "OU=" + $OUName + "," + $OUPath
 
 Import-ADUsers -BackupCsvPath $ADUsersCSVPath -OUPath $OUPath
 
-Add-SQLDB -Database $ClientDB
+Add-SQLDB -Database $Database
