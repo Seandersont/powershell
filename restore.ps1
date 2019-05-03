@@ -63,8 +63,10 @@
 Param (
   [string]$OUName = "finance",
   [string]$ADUsersCSVPath = "c:\Users\Administrator\Documents\gitRepos\powershell\Requirements2\financePersonnel.csv",
+  [string]$SQLDataCSVPath = "c:\Users\Administrator\Documents\gitRepos\powershell\Requirements2\NewClientData.csv",
   [string]$OUPath = "DC=seandersontech,DC=com",
-  [string]$Database = "ClientDB"
+  [string]$Database = "ClientDB",
+  [string]$SqlServer = "DCSVR01"
 )
 
 ## VARIABLES
@@ -128,8 +130,9 @@ Function Add-SQLDB {
   Param (
     [Parameter(Mandatory)]
     [string]$Database,
+    [Parameter(Mandatory)]
+    [string]$SqlServer,
     [string]$Table = "Client_A_Contacts",
-    [string]$SqlServer = "DCSVR01",
     [string]$SqlServerPath = "SQLSERVER:\SQL\DCSVR01\"
   )
   Write-Host -ForegroundColor Cyan "Configuring SQL"
@@ -149,18 +152,18 @@ Function Add-SQLDB {
   Write-Host -ForegroundColor Yellow "Creating Table " $Table
 
   $CreateTable = @"
-    Use ClientDB
-    CREATE TABLE Client_A_Contacts
-    (
-    first_name varchar(100) NOT NULL,
-    last_name varchar(100) NOT NULL,
-    samAccount varchar(100) NOT NULL,
-    city varchar(100) NOT NULL,
-    county varchar(100) NOT NULL,
-    zip int NOT NULL,
-    phone1 varchar(20) NOT NULL,
-    phone2 varchar(20) NOT NULL
-    )
+Use ClientDB
+CREATE TABLE Client_A_Contacts
+(
+first_name varchar(100) NOT NULL,
+last_name varchar(100) NOT NULL,
+samAccount varchar(100) NOT NULL,
+city varchar(100) NOT NULL,
+county varchar(100) NOT NULL,
+zip int NOT NULL,
+phone1 varchar(20) NOT NULL,
+phone2 varchar(20) NOT NULL
+)
 "@
 
   # Create Table
@@ -171,7 +174,54 @@ Function Add-SQLDB {
 }
 
 Function Import-SQLData {
+  Param (
+    [Parameter(Mandatory)]
+    [string]$CSVPath,
+    [Parameter(Mandatory)]
+    [string]$Database,
+    [Parameter(Mandatory)]
+    [string]$SqlServer
+  )
+  
+  Write-Host -ForegroundColor Yellow "Importing SQL Data"
+  
+  # Import SQL Data
+  
+  $SQLData = Import-Csv $CSVPath
 
+  # Prepare Query
+
+  $TableData = @"
+INSERT INTO dbo.Client_A_Contacts
+VALUES
+
+"@
+
+  # Insert Data
+
+  $n = 0
+
+  ForEach ( $user in $SQLData ) {
+    if($n -ne 0){
+    $TableData += ",`n"
+    }
+    $n = 1
+    $TableData += "('" + $user.first_name
+    $TableData += "', '" + $user.last_name
+    $TableData += "', '" + $user.samAccount
+    $TableData += "', '" + $user.city
+    $TableData += "', '" + $user.county
+    $TableData += "', " + $user.zip
+    $TableData += ", '" + $user.phone1
+    $TableData += "', '" + $user.phone2
+    $TableData += "')"
+  }
+
+  # Invoke SQL Command to Import Data into Table
+
+  Invoke-Sqlcmd -ServerInstance $SqlServer -Database $Database -Query $TableData
+
+  Write-Host -ForegroundColor Green "Done"
 }
 
 ## EXECUTION
@@ -182,4 +232,6 @@ $OUPath = "OU=" + $OUName + "," + $OUPath
 
 Import-ADUsers -BackupCsvPath $ADUsersCSVPath -OUPath $OUPath
 
-Add-SQLDB -Database $Database
+Add-SQLDB -Database $Database -SqlServer $SqlServer
+
+Import-SQLData -CSVPath $SQLDataCSVPath -Database $Database -SqlServer $SqlServer
