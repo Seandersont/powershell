@@ -1,6 +1,6 @@
 ﻿**********************
 Windows PowerShell transcript start
-Start time: 20190520170044
+Start time: 20190520170743
 Username: WINSVR01\Administrator
 RunAs User: WINSVR01\Administrator
 Configuration Name: 
@@ -16,151 +16,155 @@ WSManStackVersion: 3.0
 PSRemotingProtocolVersion: 2.3
 SerializationVersion: 1.1.0.1
 **********************
-Transcript started, output file is test.txt
+Transcript started, output file is PWSH_Session.txt
 PS C:\Users\Administrator\gitRepos\powershell\Problem1> .\prompts.ps1
+1. List log files within the Requirements1 folder
 
-1.	List log files within the Requirements1 folder
+2. List the files inside the Requirements1 folder.
 
-2.  List the files inside the Requirements1 folder.
-
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
+5. Exit the script execution.
 
-1.	List log files within the Requirements1 folder
+>> Select a Number:1
 
-2.  List the files inside the Requirements1 folder.
+1. List log files within the Requirements1 folder
 
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+2. List the files inside the Requirements1 folder.
+
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
+5. Exit the script execution.
 
-1.	List log files within the Requirements1 folder
+>> Select a Number: 2
 
-2.  List the files inside the Requirements1 folder.
+1. List log files within the Requirements1 folder
 
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+2. List the files inside the Requirements1 folder.
+
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
+5. Exit the script execution.
+
+>> Select a Number: 3
 
 Timestamp                 CounterSamples
 ---------                 --------------
-5/20/2019 5:01:07 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
-                          4141039.81675089
+5/20/2019 5:08:00 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          0
 
                           \\winsvr01\processor(_total)\% processor time :
-                          0.000313999014045496
+                          0.012098536077132
 
                           \\winsvr01\memory\% committed bytes in use :
-                          25.7234235819717
+                          25.9743301491193
 
                           \\winsvr01\memory\cache faults/sec :
                           0
 
                           \\winsvr01\physicaldisk(_total)\% disk time :
-                          0.0127719598960459
+                          0
 
                           \\winsvr01\physicaldisk(_total)\current disk queue length :
                           0
 
 
-5/20/2019 5:01:12 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
-                          4123025.0933792
+5/20/2019 5:08:05 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          0
 
                           \\winsvr01\processor(_total)\% processor time :
-                          1.59501532204231E-05
+                          0.445841353001541
 
                           \\winsvr01\memory\% committed bytes in use :
-                          25.7366964420622
+                          25.9728396139044
 
                           \\winsvr01\memory\cache faults/sec :
                           0
 
                           \\winsvr01\physicaldisk(_total)\% disk time :
-                          0.043210958839872
+                          0
 
                           \\winsvr01\physicaldisk(_total)\current disk queue length :
                           0
 
 
-5/20/2019 5:01:17 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
-                          8687024.6543942
+5/20/2019 5:08:10 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          0
 
                           \\winsvr01\processor(_total)\% processor time :
-                          0
+                          0.761482680221748
 
                           \\winsvr01\memory\% committed bytes in use :
-                          25.7324377600412
+                          25.9584311223492
 
                           \\winsvr01\memory\cache faults/sec :
-                          0
+                          0.198556754489775
 
                           \\winsvr01\physicaldisk(_total)\% disk time :
-                          0.336557494663793
+                          0.0575391358054254
 
                           \\winsvr01\physicaldisk(_total)\current disk queue length :
                           0
 
 
-5/20/2019 5:01:22 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
-                          4563925.12960468
+5/20/2019 5:08:15 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          0
 
                           \\winsvr01\processor(_total)\% processor time :
-                          0.00062803343888751
+                          0.21063738240048
 
                           \\winsvr01\memory\% committed bytes in use :
-                          25.7265466092449
+                          25.9786597979205
 
                           \\winsvr01\memory\cache faults/sec :
-                          0
+                          0.19957632341455
 
                           \\winsvr01\physicaldisk(_total)\% disk time :
-                          0.00349106841746439
+                          0.0581791941933129
 
                           \\winsvr01\physicaldisk(_total)\current disk queue length :
                           0
 
 
+1. List log files within the Requirements1 folder
 
-1.	List log files within the Requirements1 folder
+2. List the files inside the Requirements1 folder.
 
-2.  List the files inside the Requirements1 folder.
-
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
+5. Exit the script execution.
 
-
+>> Select a Number: 4
 
 Name                  Id TotalProcessorTime
 ----                  -- ------------------
-powershell          5352 00:00:50.5937500
-MsMpEng             2628 00:00:36.5625000
-notepad++           6004 00:00:30.3906250
+powershell          5352 00:00:51.2812500
+MsMpEng             2628 00:00:37.2343750
+notepad++           6004 00:00:31.1562500
 powershell_ise      4540 00:00:30.2343750
-conhost             5336 00:00:12.3593750
-dwm                  388 00:00:11.0937500
+conhost             5336 00:00:13.2500000
+dwm                  388 00:00:11.9843750
+System                 4 00:00:10.6406250
 svchost             1236 00:00:10.6093750
-System                 4 00:00:10.5156250
-explorer            4652 00:00:07.7968750
-csrss                540 00:00:06.6250000
+explorer            4652 00:00:08.7500000
+csrss                540 00:00:07.0312500
 ServerManager       4264 00:00:05.0312500
 svchost             2396 00:00:04.3906250
 SearchUI            5040 00:00:04.2812500
 services             672 00:00:03.2031250
 svchost             2464 00:00:01.6250000
 WmiPrvSE            3412 00:00:01.2343750
-svchost              952 00:00:00.9843750
-lsass                688 00:00:00.8593750
-ctfmon              4340 00:00:00.8437500
+svchost              952 00:00:01.0156250
+lsass                688 00:00:00.8906250
+ctfmon              4340 00:00:00.8750000
 ShellExperienceHost 4936 00:00:00.7656250
 svchost              836 00:00:00.7343750
 sihost              3348 00:00:00.5625000
@@ -179,19 +183,19 @@ svchost             1852 00:00:00.2187500
 svchost             1000 00:00:00.2187500
 svchost             1084 00:00:00.2031250
 spoolsv             2304 00:00:00.2031250
-svchost             2412 00:00:00.1875000
 svchost             2876 00:00:00.1875000
+svchost             2412 00:00:00.1875000
 RuntimeBroker       5228 00:00:00.1875000
+svchost             1636 00:00:00.1718750
 svchost             1080 00:00:00.1718750
 dllhost             5708 00:00:00.1562500
 svchost             2820 00:00:00.1562500
 smartscreen         5280 00:00:00.1562500
 winlogon             600 00:00:00.1406250
 svchost             2404 00:00:00.1406250
-svchost             1636 00:00:00.1250000
+svchost             3080 00:00:00.1250000
 wininit              528 00:00:00.1250000
 svchost               88 00:00:00.1250000
-svchost             3080 00:00:00.1250000
 svchost             2348 00:00:00.1250000
 svchost             1588 00:00:00.1250000
 svchost             1324 00:00:00.1250000
@@ -230,18 +234,20 @@ svchost              812 00:00:00
 Idle                   0
 
 
+1. List log files within the Requirements1 folder
 
-1.	List log files within the Requirements1 folder
+2. List the files inside the Requirements1 folder.
 
-2.  List the files inside the Requirements1 folder.
-
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
+5. Exit the script execution.
+
+>> Select a Number: 5
+
 PS C:\Users\Administrator\gitRepos\powershell\Problem1> Stop-Transcript
 **********************
 Windows PowerShell transcript end
-End time: 20190520170138
+End time: 20190520170841
 **********************

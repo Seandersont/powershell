@@ -31,26 +31,7 @@ B.  	Create a “switch” statement that continues to prompt a user by doing ea
 
 	5.  	Exit the script execution. (User presses key 5.)
 
- 
-
-C.  	Apply scripting standards throughout your script, including the addition of 
-	comments that describe the behavior of each of parts B1–B5.
-
- 
-
-D.  	Apply exception handling using try-catch for System.OutOfMemoryException.
-
- 
-
-E.  	Run your script and take a screenshot of the user results when each prompt (parts B3–B4) 
-	is chosen. Save each screenshot within the “Requirements1” folder. Compress all files 
-	(original and new) within the folder to a ZIP archive.
-
- 
-
-F.  	When you are ready to submit your final script, run the Get-FileHash cmdlet 
-	against the “Requirements1” ZIP archive. Note that hash value and place it into 
-	the comment section when you submit your task.
+C.  	Apply exception handling using try-catch for System.OutOfMemoryException.
 
 .NOTES
   Version:	  1.0
@@ -94,18 +75,17 @@ Try
 {
 	while ( $n -ne 5)
 	{
-		write-host -ForegroundColor DarkCyan '
-1.	List log files within the Requirements1 folder
+		write-host -ForegroundColor DarkCyan '1. List log files within the Requirements1 folder.
 
-2.  List the files inside the Requirements1 folder.
+2. List the files inside the Requirements1 folder.
 
-3.  List the current CPU %, Processor Time, and physical memory usage. 
+3. List the current CPU %, Processor Time, and physical memory usage. 
 	
-4.  Display running processes.
+4. Display running processes.
 		
-5.  Exit the script execution.
-	'
-		$n = Read-Host -Prompt 'Select a Number'
+5. Exit the script execution.
+'
+		$n = Read-Host -Prompt '>> Select a Number'
 		switch -Exact ($n)
 		{
 			1 {Out-LogFiles(".\Requirements1")}
