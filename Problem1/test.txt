@@ -1,0 +1,247 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190520170044
+Username: WINSVR01\Administrator
+RunAs User: WINSVR01\Administrator
+Configuration Name: 
+Machine: WINSVR01 (Microsoft Windows NT 10.0.17763.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 5352
+PSVersion: 5.1.17763.316
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17763.316
+BuildVersion: 10.0.17763.316
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is test.txt
+PS C:\Users\Administrator\gitRepos\powershell\Problem1> .\prompts.ps1
+
+1.	List log files within the Requirements1 folder
+
+2.  List the files inside the Requirements1 folder.
+
+3.  List the current CPU %, Processor Time, and physical memory usage. 
+	
+4.  Display running processes.
+		
+5.  Exit the script execution.
+
+1.	List log files within the Requirements1 folder
+
+2.  List the files inside the Requirements1 folder.
+
+3.  List the current CPU %, Processor Time, and physical memory usage. 
+	
+4.  Display running processes.
+		
+5.  Exit the script execution.
+
+1.	List log files within the Requirements1 folder
+
+2.  List the files inside the Requirements1 folder.
+
+3.  List the current CPU %, Processor Time, and physical memory usage. 
+	
+4.  Display running processes.
+		
+5.  Exit the script execution.
+
+Timestamp                 CounterSamples
+---------                 --------------
+5/20/2019 5:01:07 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          4141039.81675089
+
+                          \\winsvr01\processor(_total)\% processor time :
+                          0.000313999014045496
+
+                          \\winsvr01\memory\% committed bytes in use :
+                          25.7234235819717
+
+                          \\winsvr01\memory\cache faults/sec :
+                          0
+
+                          \\winsvr01\physicaldisk(_total)\% disk time :
+                          0.0127719598960459
+
+                          \\winsvr01\physicaldisk(_total)\current disk queue length :
+                          0
+
+
+5/20/2019 5:01:12 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          4123025.0933792
+
+                          \\winsvr01\processor(_total)\% processor time :
+                          1.59501532204231E-05
+
+                          \\winsvr01\memory\% committed bytes in use :
+                          25.7366964420622
+
+                          \\winsvr01\memory\cache faults/sec :
+                          0
+
+                          \\winsvr01\physicaldisk(_total)\% disk time :
+                          0.043210958839872
+
+                          \\winsvr01\physicaldisk(_total)\current disk queue length :
+                          0
+
+
+5/20/2019 5:01:17 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          8687024.6543942
+
+                          \\winsvr01\processor(_total)\% processor time :
+                          0
+
+                          \\winsvr01\memory\% committed bytes in use :
+                          25.7324377600412
+
+                          \\winsvr01\memory\cache faults/sec :
+                          0
+
+                          \\winsvr01\physicaldisk(_total)\% disk time :
+                          0.336557494663793
+
+                          \\winsvr01\physicaldisk(_total)\current disk queue length :
+                          0
+
+
+5/20/2019 5:01:22 PM      \\winsvr01\network interface(intel[r] 82574l gigabit network connection)\bytes total/sec :
+                          4563925.12960468
+
+                          \\winsvr01\processor(_total)\% processor time :
+                          0.00062803343888751
+
+                          \\winsvr01\memory\% committed bytes in use :
+                          25.7265466092449
+
+                          \\winsvr01\memory\cache faults/sec :
+                          0
+
+                          \\winsvr01\physicaldisk(_total)\% disk time :
+                          0.00349106841746439
+
+                          \\winsvr01\physicaldisk(_total)\current disk queue length :
+                          0
+
+
+
+1.	List log files within the Requirements1 folder
+
+2.  List the files inside the Requirements1 folder.
+
+3.  List the current CPU %, Processor Time, and physical memory usage. 
+	
+4.  Display running processes.
+		
+5.  Exit the script execution.
+
+
+
+Name                  Id TotalProcessorTime
+----                  -- ------------------
+powershell          5352 00:00:50.5937500
+MsMpEng             2628 00:00:36.5625000
+notepad++           6004 00:00:30.3906250
+powershell_ise      4540 00:00:30.2343750
+conhost             5336 00:00:12.3593750
+dwm                  388 00:00:11.0937500
+svchost             1236 00:00:10.6093750
+System                 4 00:00:10.5156250
+explorer            4652 00:00:07.7968750
+csrss                540 00:00:06.6250000
+ServerManager       4264 00:00:05.0312500
+svchost             2396 00:00:04.3906250
+SearchUI            5040 00:00:04.2812500
+services             672 00:00:03.2031250
+svchost             2464 00:00:01.6250000
+WmiPrvSE            3412 00:00:01.2343750
+svchost              952 00:00:00.9843750
+lsass                688 00:00:00.8593750
+ctfmon              4340 00:00:00.8437500
+ShellExperienceHost 4936 00:00:00.7656250
+svchost              836 00:00:00.7343750
+sihost              3348 00:00:00.5625000
+svchost             1864 00:00:00.5468750
+svchost             1556 00:00:00.5156250
+Registry             136 00:00:00.4843750
+RuntimeBroker       3464 00:00:00.4687500
+svchost             4352 00:00:00.4218750
+svchost             3480 00:00:00.4218750
+svchost             4236 00:00:00.3593750
+svchost             2496 00:00:00.2812500
+smss                 348 00:00:00.2812500
+fontdrvhost          868 00:00:00.2656250
+csrss                448 00:00:00.2656250
+svchost             1852 00:00:00.2187500
+svchost             1000 00:00:00.2187500
+svchost             1084 00:00:00.2031250
+spoolsv             2304 00:00:00.2031250
+svchost             2412 00:00:00.1875000
+svchost             2876 00:00:00.1875000
+RuntimeBroker       5228 00:00:00.1875000
+svchost             1080 00:00:00.1718750
+dllhost             5708 00:00:00.1562500
+svchost             2820 00:00:00.1562500
+smartscreen         5280 00:00:00.1562500
+winlogon             600 00:00:00.1406250
+svchost             2404 00:00:00.1406250
+svchost             1636 00:00:00.1250000
+wininit              528 00:00:00.1250000
+svchost               88 00:00:00.1250000
+svchost             3080 00:00:00.1250000
+svchost             2348 00:00:00.1250000
+svchost             1588 00:00:00.1250000
+svchost             1324 00:00:00.1250000
+svchost             3344 00:00:00.1093750
+svchost             1448 00:00:00.1093750
+svchost             1128 00:00:00.1093750
+svchost             1692 00:00:00.1093750
+svchost             1316 00:00:00.1093750
+svchost             2488 00:00:00.0937500
+svchost             2388 00:00:00.0937500
+taskhostw           4116 00:00:00.0937500
+svchost             5584 00:00:00.0937500
+NisSrv              3888 00:00:00.0781250
+svchost             1788 00:00:00.0781250
+svchost             1624 00:00:00.0625000
+svchost             3132 00:00:00.0468750
+RuntimeBroker       5116 00:00:00.0468750
+svchost             4468 00:00:00.0468750
+msdtc               5704 00:00:00.0468750
+svchost             1512 00:00:00.0468750
+fontdrvhost          860 00:00:00.0468750
+svchost             2504 00:00:00.0468750
+svchost             4296 00:00:00.0468750
+blnsvr              2656 00:00:00.0312500
+wlms                2472 00:00:00.0312500
+svchost             1308 00:00:00.0312500
+svchost              408 00:00:00.0312500
+svchost             1348 00:00:00.0312500
+svchost             1300 00:00:00.0312500
+svchost             1968 00:00:00.0312500
+svchost              784 00:00:00.0156250
+svchost              640 00:00:00.0156250
+svchost             6016 00:00:00.0156250
+svchost             2108 00:00:00.0156250
+svchost              812 00:00:00
+Idle                   0
+
+
+
+1.	List log files within the Requirements1 folder
+
+2.  List the files inside the Requirements1 folder.
+
+3.  List the current CPU %, Processor Time, and physical memory usage. 
+	
+4.  Display running processes.
+		
+5.  Exit the script execution.
+PS C:\Users\Administrator\gitRepos\powershell\Problem1> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20190520170138
+**********************
